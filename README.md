@@ -1,116 +1,79 @@
-# Group Allocation & Event Management System
+Group Allocation System (Django + Docker)
 
-A **full-stack Django web application** designed to manage events and **automatically allocate participants into groups** using optimization techniques.  
-The system supports user authentication, event participation, and organizer-driven group allocation with real-world constraints.
+A full-stack Django web application for managing events and intelligently allocating participants into groups based on preferences and constraints.
+The project is fully Dockerized and uses PostgreSQL for production-ready data storage.
 
-🔹 Built as an end-to-end project demonstrating **backend development, optimization logic, and deployment readiness**.
+🚀 Features
 
----
+User authentication (Signup / Login)
 
-## 🎯 Problem Statement
+Role-based access (Admin, Organizer, Participant)
 
-Manual group allocation in events is:
-- Time-consuming
-- Error-prone
-- Difficult to optimize under constraints (capacity, preferences, fairness)
+Event creation and management
 
-This application **automates group allocation** using mathematical optimization, improving efficiency and scalability for event organizers.
+Participant preference collection
 
----
+Optimization-based group allocation using Linear Programming
 
-## 🚀 Key Features
+Manual and automatic allocation modes
 
-### User Features
-- User signup & login
-- Event participation
-- Preference submission
-- Activity tracking
+Responsive UI with Bootstrap
 
-### Organizer Features
-- Event creation & management
-- Participant overview
-- Automated group allocation
-- Manual override & re-allocation
-- Allocation status monitoring
+Production-ready setup using Docker & Gunicorn
 
-### System Capabilities
-- Constraint-based group assignment
-- Role-based views (Guest / Organizer)
-- Responsive UI with static assets
-- Secure authentication workflow
+🛠 Tech Stack
 
----
+Backend
 
-## 🧠 Optimization & Logic
+Python 3.12
 
-- **PuLP** used for linear/integer programming
-- **Gurobi** solver integrated for optimized allocation
-- Supports constraints like:
-  - Group capacity
-  - Participant preferences
-  - Maximum allocation limits
-- Allocation logic separated from UI for maintainability
+Django 5
 
----
+Gunicorn
 
-## 🛠 Tech Stack
+PuLP (Linear Programming)
 
-### Backend
-- **Python 3.12**
-- **Django 5.0.3**
-- Django ORM & Migrations
-- Authentication & Authorization
+Gurobi (Optimization Solver)
 
-### Optimization
-- **Gurobi**
-- **PuLP**
+Database
 
-### Frontend
-- HTML5, CSS3
-- JavaScript
-- Bootstrap
+PostgreSQL (production)
 
-### Database
-- SQLite (development)
+SQLite (local development optional)
 
-### DevOps & Tooling
-- Git & GitHub
-- Virtual Environments
-- Docker-ready architecture
+Frontend
 
----
-Project Structure
+HTML5, CSS3
+
+Bootstrap
+
+JavaScript / jQuery
+
+DevOps
+
+Docker
+
+Docker Compose
+
+WhiteNoise (static files)
+
+
+🚀Project Structure
+
 groupAllocation/
-├── AllocationAdmin/              # Core business logic & group allocation
-│   ├── migrations/               # Database migrations
-│   ├── admin.py                  # Django admin configuration
-│   ├── apps.py                   # App configuration
-│   ├── models.py                 # Database models
-│   ├── urls.py                   # App-level routing
-│   └── views.py                  # Allocation & event handling logic
 │
-├── groupAllocation/              # Main Django project configuration
-│   ├── settings.py               # Project settings
-│   ├── urls.py                   # Root URL configuration
-│   ├── asgi.py                   # ASGI entry point
-│   └── wsgi.py                   # WSGI entry point
+├── AllocationAdmin/        # Core app (events, allocation logic)
+├── user/                   # User management
+├── groupAllocation/        # Project settings & URLs
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
 │
-├── user/                         # User management module
-│   ├── migrations/               # User-related migrations
-│   ├── models.py                 # User models
-│   ├── urls.py                   # User routes
-│   └── views.py                  # Authentication & profile logic
-│
-├── templates/                    # HTML templates
-│   ├── Guest/                    # Guest-facing UI
-│   └── Organizer/                # Organizer dashboard UI
-│
-├── static/                       # Static assets
-│   ├── css/                      # Stylesheets
-│   ├── js/                       # JavaScript files
-│   └── img/                      # Images & media
-│
-├── manage.py                     # Django management script
-├── requirements.txt              # Python dependencies
-├── README.md                     # Project documentation
-└── .gitignore                    # Git ignore rules
+├── templates/              # HTML templates
+├── static/                 # CSS, JS, images
+├── Dockerfile
+├── docker-compose.yml
+├── entrypoint.sh
+├── requirements.txt
+├── manage.py
+└── README.md
