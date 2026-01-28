@@ -1,0 +1,56 @@
+{% extends 'Organizer/Head.html'%}
+{% load static %}
+
+
+{% block content %}
+<br><br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant List for {{ event.name }}</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Participants for {{ event.name }}</h1>
+        <table id="myTable" class="table table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+
+                    <th>Preference</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for participant_activity in participant_activities %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{ participant_activity.participant.name }}</td>
+                    <td>{{ participant_activity.participant.email }}</td>
+                    <td>{{ participant_activity.preference|safe }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert  {% if message.tags == 'success' %} alert-success {% elif message.tags == 'error' %} alert-danger {% elif message.tags == 'warning' %} alert-warning {% endif %} alert-dismissible fade show"
+            data-timeout="3000" role="alert">
+            {{message}}
+            <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</body>
+
+</html>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

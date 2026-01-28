@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Manup Template">
+    <meta name="keywords" content="Manup, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Groupy</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans:400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{% static 'Main/css/bootstrap.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Main/css/font-awesome.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Main/css/elegant-icons.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Main/css/owl.carousel.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Main/css/magnific-popup.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Main/css/slicknav.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Main/css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'Form/form.css' %}" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!doctype html>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="container">
+            <div class="logo" style="padding-top: 15px !important;">
+                <a href="{% url 'home'%}">
+                    <h2>GroupGo:</h2> <span class="small text-black">Effortless Activity Picker</span>
+                </a>
+            </div>
+            <div class="nav-menu" style="padding-top: 36px;">
+                <nav class="mainmenu mobile-menu">
+                    <ul>
+                        <li class="active"><a href="{% url 'home'%}">Home</a></li>
+                        <li><a href="{% url 'login' %}">Orgaziner</a></li>
+
+                    </ul>
+                </nav>
+                <a href="" class="primary-btn top-btn"><i class="fa fa-ticket"></i> Participate</a>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    {% block content %}
+
+    {% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script
+        src="https://cdn.datatables.net/v/bs5/jq-3.6.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/sb-1.4.2/sp-2.1.2/datatables.min.js"></script>
+    <script>
+        // Automatically close the notification after 5 seconds
+        setTimeout(function () {
+            var notification = document.querySelector('.alert');
+            notification.style.display = 'none';
+        }, 3000);
+
+
+
+        $(document).ready(function () {
+            // Initialize datatable with search functionality, pagination, and icons
+            // Initialize DataTable for tables with IDs like "myTable1", "myTable2", etc.
+            $('table[id^="myTable"]').DataTable({
+                searching: true,
+                ordering: true,
+                paging: true,
+                pageLength: 10,
+                dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6"f>>' +
+                    '<"row"<"col-sm-12"tr>>' +
+                    '<"row"<"col-sm-12 col-md-5"i><"col-sm-12 col-md-7"p>>',
+                language: {
+                    paginate: {
+                        previous: '<i class="fas fa-chevron-left"></i>',
+                        next: '<i class="fas fa-chevron-right"></i>'
+                    }
+                }
+            });
+        });
+    </script>
+
+
+    <!-- Js Plugins -->
+    <script src="{% static 'Main/js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'Main/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'Main/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'Main/js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'Main/js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'Main/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'Main/js/main.js' %}"></script>

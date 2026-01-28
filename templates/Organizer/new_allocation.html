@@ -1,0 +1,63 @@
+{% extends 'Organizer/Head.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<br><br><br><br>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Participant Allocation</title>
+</head>
+<body>
+    <div class="container">
+     
+        <h1>Allocation Results</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Participant Name</th>
+                    <th>Assigned Event</th>
+                    <th>Preferences</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for participant in participants %}
+                <tr>
+                    <td>{{ participant.name }}</td>
+                    <td>
+                        {% if participant.assigned_to_new %}
+                            {{ participant.assigned_to_new.name }}
+                        {% else %}
+                            None
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for pa in participant.participantactivity_set.all %}
+                          {{ pa.event.name }}: {{ pa.preference }} ,
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3">No participants have been allocated yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert  {% if message.tags == 'success' %} alert-success alert-dismissible {% elif message.tags == 'error' %} alert-danger alert-dismissible {% elif message.tags == 'warning' %} alert-warning {% endif %}  fade show"
+            data-timeout="3000" role="alert">
+            {{message}}
+            {% if message.tags == 'warning' %} <a  href="{% url 'edit_allocation_new' %}" class="btn fa-solid fa-plus float-end" ></a> {% else %}<button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button> {% endif %}
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</body>
+</html>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}
