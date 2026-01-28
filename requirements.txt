@@ -1,7 +1,9 @@
 asgiref==3.8.1
 Django==5.0.3
-gurobipy==13.0.1
+gurobipy==11.0.2
 sqlparse==0.4.4
 pulp==2.8.0
 gunicorn==21.2.0
+psycopg[binary]==3.2.1
+whitenoise==6.6.0
 tzdata

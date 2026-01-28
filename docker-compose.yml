@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: groupallocation
+      POSTGRES_USER: groupuser
+      POSTGRES_PASSWORD: grouppass
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DB_NAME: groupallocation
+      DB_USER: groupuser
+      DB_PASSWORD: grouppass
+      DB_HOST: db
+      DB_PORT: "5432"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
